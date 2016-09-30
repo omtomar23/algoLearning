@@ -13,6 +13,16 @@ public class TreeUtils
 {
 	private TreeUtils(){}
 	
+	/**
+	 * N-->L-->R
+	 * Input:
+	 * 				1
+	 * 		10				11
+	 * 20		30		22		33
+	 * Output:
+	 * [1 10 20 30  11 22 33]
+	 * 
+	 */
 	public static <E> List<E> preOrder(TNode<E> root)
 	{
 		if(root == null)
@@ -34,6 +44,42 @@ public class TreeUtils
 			{
 				stack.push(temp.getLeft());
 			}
+		}
+		
+		return elements;
+	}
+	
+	/**
+	 * L-->N-->R
+	 * Input:
+	 * 				1
+	 * 		10				11
+	 * 20		30		22		33
+	 * Output:
+	 * [20 10 30 1  22 11 33]
+	 * 
+	 */
+	public static <E> List<E> inOrder(TNode<E> root)
+	{
+		if(root == null)
+			throw new IllegalArgumentException("Root Should Not Be Null.");
+		
+		List<E> elements = new ArrayList<>();
+		
+		Stack<TNode<E>> stack = new Stack<TNode<E>>();
+		while(true)
+		{
+			while(root != null)
+			{
+				stack.push(root);
+				root = root.getLeft();
+			}
+			if(stack.isEmpty())
+				break ;
+			
+			TNode<E> temp = stack.pop();
+			elements.add(temp.getElement());
+			root = temp.getRight();
 		}
 		
 		return elements;
