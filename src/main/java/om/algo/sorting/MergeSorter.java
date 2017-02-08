@@ -17,9 +17,10 @@ public class MergeSorter implements Sorter
 			merge(arr, startIndex, mid, lastIndex);
 		}
 	}
-
+	
 	private void merge(int[] arr, int startIndex, int mid, int lastIndex) 
 	{
+		System.out.println("Starting Index="+ startIndex + " ,mid="+ mid + " ,lastIndex="+ lastIndex);
 		int n1 = mid - startIndex + 1;
 		int n2 = lastIndex - mid;
 		
@@ -61,7 +62,7 @@ public class MergeSorter implements Sorter
 			i++;
 		}
 		
-		/* Copy remaining elements of L[] if any */
+		/* Copy remaining elements of R[] if any */
 		while(j < n2)
 		{
 			arr[k] = R[j];

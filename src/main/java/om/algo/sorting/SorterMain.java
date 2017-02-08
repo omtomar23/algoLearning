@@ -48,9 +48,9 @@ public class SorterMain
 	public static void main(String[] args) 
 	{
 		sortByQuickSort(new int[]{4,6,1,5,77,22});
-		sortByMergeSort(new int[]{4,6,1,5,77,22});
-		sortByInsertionSort(new int[]{4,6,1,5,77,22});
-		sortBySelectionSort(new int[]{4,6,1,5,77,22});
+		sortByMergeSort(new int[]{2,7,1,5,3});
+		//sortByInsertionSort(new int[]{4,6,1,5,77,22});
+		//sortBySelectionSort(new int[]{4,6,1,5,77,22});
 		
 	}
 }
