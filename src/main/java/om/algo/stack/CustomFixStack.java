@@ -30,14 +30,15 @@ public class CustomFixStack<T>
 		elements[count++] = element;
 	}
 	
-	@SuppressWarnings("unchecked")
 	public T pop()
 	{
 		if(isStackEmpty())
 			throw new RuntimeException("Stack Unfer Flow Exception");
-		Object element = elements[--count];
+		
+		@SuppressWarnings("unchecked")
+		T element = (T)elements[--count];
 		elements[count] = null;
-		return (T)element;
+		return element;
 	}
 	
 	public int size()
