@@ -6,7 +6,7 @@ public class ArrayQueue<E> implements IQueue<E>
 	private Object[] elements;
 	private int front = -1;
 	private int rear = -1;
-	
+	private int size = 0 ;
 	public ArrayQueue(int capacity)
 	{
 		this.capacity = capacity;
@@ -19,6 +19,7 @@ public class ArrayQueue<E> implements IQueue<E>
 			throw new RuntimeException("Queue has been full.");
 		rear = (rear + 1)% capacity;
 		elements[rear] = element;
+		size++;
 		if(front == -1)
 			front = rear;
 	}
@@ -31,7 +32,7 @@ public class ArrayQueue<E> implements IQueue<E>
 		@SuppressWarnings("unchecked")
 		E element = (E)elements[front];
 		elements[front] = null;
-		
+		size--;
 		if(front == rear)
 		{
 			front = -1;
@@ -58,5 +59,10 @@ public class ArrayQueue<E> implements IQueue<E>
 	public String toString() {
 		return "ArrayQueue [isEmpty()=" + isEmpty() + ", isFull()=" + isFull()
 				+ "]";
+	}
+
+	public int size() 
+	{
+		return size;
 	}
 }

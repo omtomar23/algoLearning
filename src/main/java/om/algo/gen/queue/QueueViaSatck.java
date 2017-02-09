@@ -4,6 +4,7 @@ import java.util.Stack;
 
 public class QueueViaSatck<E> implements IQueue<E>
 {
+	private int size = 0;
 	private Stack<E> s1;
 	private Stack<E> s2;
 	public QueueViaSatck()
@@ -13,6 +14,7 @@ public class QueueViaSatck<E> implements IQueue<E>
 	}
 	public void enqueue(E element) 
 	{
+		size++;
 		s1.push(element);
 	}
 
@@ -28,9 +30,12 @@ public class QueueViaSatck<E> implements IQueue<E>
 			{
 				s2.push(s1.pop());
 			}
+			size--;
 			return s1.pop();
 		}
+		size--;
 		return s2.pop();
+		
 	}
 
 	public boolean isEmpty() 
@@ -41,6 +46,11 @@ public class QueueViaSatck<E> implements IQueue<E>
 	public boolean isFull() 
 	{
 		return false;
+	}
+	
+	public int size()
+	{
+		return size;
 	}
 	
 }

@@ -6,4 +6,5 @@ public interface IQueue<E>
 	E dequeue();
 	boolean isEmpty();
 	boolean isFull();
+	int size();
 }
