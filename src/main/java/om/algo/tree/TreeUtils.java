@@ -84,4 +84,36 @@ public class TreeUtils
 		
 		return elements;
 	}
+	
+	/**
+	 * L-->R-->N
+	 * Input:
+	 * 				1
+	 * 		10				11
+	 * 20		30		22		33
+	 * Output:
+	 * [20 30 10 22 33 11 1]
+	 * 
+	 */
+	public static <E> List<E> postOrder(TNode<E> root)
+	{
+		if(root == null)
+			throw new IllegalArgumentException("Root Should Not Be Null.");
+		
+		List<E> elements = new ArrayList<>();
+		
+		recPostOrder(elements, root);
+		
+		return elements;
+	}
+	
+	private static <E> void recPostOrder(List<E> elements, TNode<E> root)
+	{
+		if(root != null)
+		{
+			recPostOrder(elements, root.getLeft());
+			recPostOrder(elements, root.getRight());
+			elements.add(root.getElement());
+		}
+	}
 }
