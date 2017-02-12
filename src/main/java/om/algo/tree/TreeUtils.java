@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
+import om.algo.gen.queue.ArrayQueue;
+import om.algo.gen.queue.IQueue;
+
 /**
  * Provide The Tree Functionality
  * @author Om
@@ -115,5 +118,50 @@ public class TreeUtils
 			recPostOrder(elements, root.getRight());
 			elements.add(root.getElement());
 		}
+	}
+	
+	/**
+	 * 
+	 * Input:
+	 * 				1
+	 * 		10				11
+	 * 20		30		22		33
+	 * Output:
+	 * [1 10 11 20 30 22 33]
+	 * 
+	 */
+	public static <E> List<E> levelOrder(TNode<E> root)
+	{
+		if(root == null)
+			throw new IllegalArgumentException("Root Should Not Be Null.");
+
+		List<E> elements = new ArrayList<>();
+
+		IQueue<TNode<E>> queue = new ArrayQueue<TNode<E>>(7);
+		queue.enqueue(root);
+		while(!queue.isEmpty())
+		{
+			TNode<E> temp = queue.dequeue();
+			elements.add(temp.getElement());
+			if(temp.getLeft() != null)
+			{
+				queue.enqueue(temp.getLeft());
+			}
+			if(temp.getRight() != null)
+			{
+				queue.enqueue(temp.getRight());
+			}
+			
+		}
+		return elements;
+	}
+
+	public static <E> void calculateLevelwiseSum(TNode<E> root, int[] sum, int level)
+	{
+		if(root == null)
+			return;
+		 sum[level]+= (Integer)root.getElement();
+		 calculateLevelwiseSum(root.getLeft(),sum,level+1);
+		 calculateLevelwiseSum(root.getRight(),sum,level+1);
 	}
 }

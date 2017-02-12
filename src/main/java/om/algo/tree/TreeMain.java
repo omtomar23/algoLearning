@@ -21,9 +21,11 @@ public class TreeMain
 	}
 	public static void main(String[] args) 
 	{
-		for(int element: TreeUtils.postOrder(createDummyTree()))
+		int arr[] = new int[3];
+		TreeUtils.calculateLevelwiseSum(createDummyTree(), arr, 0);
+		for(int sum: arr)
 		{
-			System.out.println(element);
+			System.out.println(sum);
 		}
 	}
 }
