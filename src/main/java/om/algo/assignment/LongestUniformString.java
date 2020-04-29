@@ -15,8 +15,32 @@ public class LongestUniformString {
     static int[] longestUniformSubstring(String input){
         int longestStart = -1;
         int longestLength = 0;
-
         // your code goes here
+        if(Objects.nonNull(input) && !input.trim().isEmpty()) {
+            char[] chars = input.toCharArray();
+            char previousChar = chars[0];
+            int preLongestStart = 0;
+            int preLongestLength = 0;
+            int currLongestStart = 0;
+            int currLongestLength = 1;
+            for(int i = 0; i < chars.length; i++) {
+                if(previousChar == chars[i]) {
+                    currLongestLength++;
+                } else {
+                    if(currLongestLength > preLongestLength) {
+                        preLongestLength = currLongestLength;
+                        preLongestStart = currLongestStart;
+                    }
+                    currLongestStart = i;
+                    currLongestLength = 1;
+                }
+                previousChar = chars[i];
+            }
+
+            longestStart = preLongestStart;
+            longestLength = preLongestLength;
+        }
+        System.out.println("longestStart:"+ longestStart+" ,longestLength:"+ longestLength);
         return new int[]{ longestStart, longestLength };
     }
 
