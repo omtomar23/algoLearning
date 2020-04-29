@@ -1,1 +1,1 @@
-Welcome Algo Learing Program.
+Welcome Algo Learning Program.
